@@ -1,0 +1,71 @@
+name: Flask Learning CI
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Repository
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install flake8
+        run: |
+          pip install flake8
+
+      - name: Lint with flake8
+        run: |
+          make plint
+
+  check-types:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Repository
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install mypy
+        run: |
+          pip install mypy
+
+      - name: Check types with mypy
+        run: |
+          make ptypes
+
+  unit-integration-tests:
+    needs:
+      - lint
+      - check-types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Repository
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Poetry
+        run: |
+          pip install poetry==1.7.1
+          poetry config virtualenvs.create true
+          poetry config virtualenvs.in-project true
+
+      - name: Install Dependencies
+        run: |
+          poetry install
+
+      - name: Run Unit and Integration Tests
+        run: |
+          make unittest
+          make coverage

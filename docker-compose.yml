@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  flask_learning:
+    build: .
+    image: 'flask_learning:1'
+    container_name: 'flask_learning'
+    command: >
+      sh -c 'poetry run python3 src/main.py'
+    networks:
+      - backend
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./src:/service/src
+      - ./tests:/service/tests
+    restart: unless-stopped
+
+networks:
+  backend:
