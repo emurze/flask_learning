@@ -35,17 +35,32 @@ ptypes:
 # Tests
 
 coverage:
-	poetry run coverage run src/main.py && poetry run coverage report
+	poetry run coverage run src/app.py && poetry run coverage report
 
 
 unittests:
 	poetry run pytest -s tests
 
 
-test: lint types coverage unittests run
+test: lint types coverage unittests
 
 
 # Run
 
 run:
 	docker compose up --build -d
+
+run-prod:
+	docker compose -f docker-compose.prod.yml up -d --build
+
+
+# Clean
+
+down:
+	docker compose down
+	docker compose -f docker-compose.prod.yml down
+
+clean:
+	docker compose down -v
+	docker compose -f docker-compose.prod.yml down -v
+
