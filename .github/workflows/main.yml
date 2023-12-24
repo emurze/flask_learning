@@ -67,5 +67,5 @@ jobs:
 
       - name: Run Unit and Integration Tests
         run: |
-          make unittest
+          make unittests
           make coverage
