@@ -5,7 +5,7 @@ services:
     image: 'flask_learning:1'
     container_name: 'flask_learning'
     command: >
-      sh -c 'cd src && poetry run flask run -h 0.0.0.0 -p 8080'
+      sh -c 'cd src && poetry run gunicorn --bind 0.0.0.0:8080 app:app'
     networks:
       - backend
     volumes:
