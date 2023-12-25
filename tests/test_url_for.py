@@ -1,4 +1,4 @@
-from flask import url_for
+from flask import url_for, request
 
 from src.app import app
 
@@ -28,3 +28,15 @@ def test_url_for_about():
     with app.test_request_context():
         home_path = url_for("about", color="blue")
         assert home_path == "/about?color=blue"
+
+
+def test_url_for_static():
+    with app.test_request_context():
+        home_path = url_for("static", filename="style.css")
+        assert home_path == "/static/style.css"
+
+
+def test_get_articles():
+    with app.test_request_context("/get_articles", method="GET"):
+        assert request.path == "/get_articles"
+        assert request.method == "GET"
