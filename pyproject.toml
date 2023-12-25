@@ -32,12 +32,6 @@ xfail_strict = true
 cache_dir = ".cache/pytest"
 
 
-[tool.mypy]
-python_version = "3.10"
-ignore_missing_imports = true
-cache_dir = ".cache/mypy"
-
-
 [tool.coverage.run]
 omit = ["*/venv/*", "*/config/*", "*/tests/*", "*tests.py*", "*/test_*", "manage.py"]
 data_file = ".cache/.coverage"
