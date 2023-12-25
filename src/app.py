@@ -142,9 +142,9 @@ def view_abort() -> NoReturn:
     # app.logger.warning('after abort')
 
 
-@app.get("/redirect")
-def view_redirect():
-    return redirect(url_for("logic"))
+# @app.get("/redirect")
+# def view_redirect():
+#     return redirect(url_for("logic"))
 
 
 @app.errorhandler(404)
@@ -193,7 +193,7 @@ def login_post():
     return redirect(url_for("extra_info1"))
 
 
-@app.get("/logout")
-def logout():
-    session.pop("username", None)
-    return redirect(url_for("login_get"))
+# @app.get("/logout")
+# def logout():
+#     session.pop("username", None)
+#     return redirect(url_for("login_get"))
