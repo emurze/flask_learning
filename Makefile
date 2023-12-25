@@ -29,7 +29,7 @@ types:
 
 
 ptypes:
-	mypy --config setup.cfg tests src
+	mypy --config pyproject.toml tests src
 
 
 # Tests
