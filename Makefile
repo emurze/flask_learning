@@ -29,7 +29,7 @@ types:
 
 
 ptypes:
-	mypy tests src
+	mypy --config setup.cfg tests src
 
 
 # Tests
