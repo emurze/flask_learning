@@ -25,11 +25,11 @@ plint:
 
 
 types:
-	poetry run mypy --config setup.cfg tests src
+	poetry run mypy tests src
 
 
 ptypes:
-	mypy --config setup.cfg tests src
+	mypy tests src
 
 
 # Tests
