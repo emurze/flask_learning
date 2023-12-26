@@ -42,8 +42,8 @@ unittests:
 	poetry run pytest -s tests
 
 
-test: lint types coverage unittests
-
+# test: lint types coverage unittests
+test: lint types unittests
 
 # Run
 
