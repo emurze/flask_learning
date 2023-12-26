@@ -139,7 +139,6 @@ def request_object() -> Response:
 def view_abort() -> NoReturn:
     app.logger.warning("before abort")
     abort(404)
-    # app.logger.warning('after abort')
 
 
 @app.get("/redirect")
